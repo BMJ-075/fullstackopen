@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
+app.use(express.static("dist"));
 let notes = [
   {
     id: 1,
@@ -74,7 +74,7 @@ app.post("/api/notes", (request, response) => {
   response.json(note);
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`server is running on port - ${PORT}`);
 });
